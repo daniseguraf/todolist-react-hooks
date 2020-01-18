@@ -30,6 +30,17 @@ const styles = css`
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    align-items: center;
+    .content {
+      padding-right: 1.2rem;
+    }
+  }
+
+  .right-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
   }
 
   button {
