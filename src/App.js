@@ -22,14 +22,20 @@ const styles = css`
     padding: 1.5rem;
     text-align: center;
   }
+
+  .empty-list {
+    color: var(--gray-500);
+    font-size: 1.15rem;
+    text-align: center;
+  }
 `
+const mock = [
+  {id: 1, task: 'Buy water'},{id: 2, task: 'Clean oven'},{id: 3, task: 'Pay services'}
+]
 
 const App = () => {
   const [inputValue, setInputValue] = useState('')
-  const [items, setItems] = useState([
-    {id: 1, task: 'Crear Todo'},
-    {id: 2, task: 'Comprar cama'}
-  ])
+  const [items, setItems] = useState(mock)
 
   const handleChange = (e) => {
     setInputValue(e.target.value)
@@ -63,7 +69,10 @@ const App = () => {
       </header>
       <Input handleSubmit={submmited} handleChange={handleChange} value={inputValue} />
       <Tasks>
-        { items.map((el) => <Task key={el.id} {...el} handleRemoveTask={removeTask} />) }
+        { items.length ?
+          items.map((el) => <Task key={el.id} {...el} handleRemoveTask={removeTask} />)
+          : <p className="empty-list">Empty List <span role="img" aria-label="star-struck">🤩</span></p>
+        }
       </Tasks>
     </div>
   )
