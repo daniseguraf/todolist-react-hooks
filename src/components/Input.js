@@ -33,7 +33,7 @@ function Input({handleSubmit, handleChange, value}) {
     <div className="form" css={styles}>
       <form onSubmit={handleSubmit}>
         <input type="text" value={value} onChange={handleChange} />
-        <Button type="primary">Add</Button>
+        <Button type="primary" disabled={!value}>Add</Button>
       </form>
     </div>
   )

@@ -17,6 +17,16 @@ const styles = css`
   padding: 0 1rem;
   font-size: 0.875rem;
   line-height: 1;
+
+  &:disabled {
+    cursor: not-allowed;
+    background: var(--gray-300);
+    border: 1px solid var(--gray-300);
+    &:hover {
+      background: var(--gray-300);
+      border: 1px solid var(--gray-300);
+    }
+  }
 `
 const primary = css`
   color: var(--white);
@@ -69,11 +79,16 @@ const terciary = css`
   }
 `
 
-export default ({type, onClickHandler, children}) => {
+export default ({type, onClickHandler, children, disabled}) => {
   const dinamicStyle = type === 'primary' ? primary : (type === 'secondary' ? secondary : terciary);
 
-
   return (
-    <button css={[styles, dinamicStyle]} onClick={onClickHandler}>{children}</button>
+    <button
+      css={[styles, dinamicStyle]}
+      onClick={onClickHandler}
+      disabled={disabled}
+    >
+      {children}
+    </button>
   )
 }
